@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.thearchitect.agp.ui.CellEditor">
+    <center>
+        <fx:include fx:id="cellViewer" source="CellViewer.fxml" />
+    </center>
+   <right>
+      <Pane prefHeight="82.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Width:" />
+            <TextField fx:id="textWidth" layoutX="51.0" layoutY="10.0" prefHeight="19.0" prefWidth="117.0" />
+            <TextArea fx:id="textTiles" layoutX="16.0" layoutY="63.0" prefHeight="137.0" prefWidth="169.0" />
+            <Button layoutX="132.0" layoutY="457.0" mnemonicParsing="false" onAction="#reload" text="Reload" />
+            <Label layoutX="17.0" layoutY="46.0" text="Tile Data" />
+            <Label layoutX="14.0" layoutY="211.0" text="Layers" />
+            <TabPane layoutY="228.0" prefHeight="181.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="0">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="textLayer0" layoutX="15.0" layoutY="14.0" prefHeight="131.0" prefWidth="172.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="1">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="textLayer1" layoutX="14.0" layoutY="11.0" prefHeight="131.0" prefWidth="172.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="2">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="textLayer2" layoutX="14.0" layoutY="11.0" prefHeight="131.0" prefWidth="172.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="3">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="textLayer3" layoutX="14.0" layoutY="11.0" prefHeight="131.0" prefWidth="172.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="4">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="textLayer4" layoutX="14.0" layoutY="11.0" prefHeight="131.0" prefWidth="172.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

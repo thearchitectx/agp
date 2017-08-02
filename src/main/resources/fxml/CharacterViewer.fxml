@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="CharacterViewer" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.thearchitect.agp.ui.CharacterViewer">
+   <children>
+      <ImageView fx:id="background" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="body" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="layer01" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="layer02" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="layer03" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="layer04" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="layer05" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</StackPane>
