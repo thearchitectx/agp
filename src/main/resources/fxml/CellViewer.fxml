@@ -3,6 +3,6 @@
 <?import javafx.scene.layout.GridPane?>
 
 
-<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="CellViewer" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.thearchitect.agp.ui.CellViewer">
+<fx:root type="javafx.scene.layout.GridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="CellViewer" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
   
-</GridPane>
+</fx:root>

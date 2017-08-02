@@ -1,4 +1,24 @@
-.CharacterViewer {
+CharacterPane {
+    -fx-min-height: 200px;
+    -fx-background-color: red;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+}
+
+InfoPane {
+    -fx-min-height: 200px;
+    -fx-background-color: blue;
+    -fx-pref-width: 200px;
+    -fx-max-width: 200px;
+}
+
+PlayPane {
+    -fx-min-height: 200px;
+    -fx-max-width: 8000px;
+    -fx-background-color: green;
+}
+
+CharacterViewer {
     -fx-pref-width: 300px;
 }
 
@@ -7,8 +27,7 @@
 }
 
 .GameText {
-    -fx-background-color: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
-    -fx-pref-height: 150px;
+    -fx-background-color: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.9) 100%);
     -fx-padding: 5px;
 }
 
@@ -17,7 +36,7 @@
     -fx-font-size: 16;
 }
 
-.ActionPane>VBox {
+ActionPane>VBox {
     -fx-pref-width: 200px;
     -fx-alignment: TOP_CENTER;
     -fx-padding: 5px;

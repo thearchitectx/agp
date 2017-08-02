@@ -1,13 +1,9 @@
 package org.thearchitect.agp.ui;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
@@ -20,14 +16,13 @@ import org.apache.commons.lang.ArrayUtils;
 import org.thearchitect.agp.cell.Cell;
 import org.thearchitect.agp.cell.Direction;
 import org.thearchitect.agp.io.ImageStore;
+import static org.thearchitect.agp.ui.util.NodeUtils.loadFXML;
 
-public class CellViewer implements Initializable {
+public class CellViewer extends GridPane {
     public static final String IMAGE_LOCATION = "/img/cell/location.png";
     public static final int RECT_SIZE = 100;
     public static final int TILE_SHEET_SIZE = 8;
    
-    @FXML
-    private GridPane root;
     // Loaded cell
     private Cell cell;
     // Display data
@@ -36,8 +31,8 @@ public class CellViewer implements Initializable {
     private boolean[] visibleTiles;
     private int[] location;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public CellViewer() {
+        loadFXML((Node)this, "/fxml/CellViewer.fxml");
         ImageView imgView = new ImageView(ImageStore.getImage(IMAGE_LOCATION));
         imgView.setFitWidth(RECT_SIZE);
         imgView.setFitHeight(RECT_SIZE);
@@ -50,13 +45,12 @@ public class CellViewer implements Initializable {
    
     /**
      * Load a cell
-     * @param width
-     * @param tiles
+     * @param cell
      * @param visibleTiles
-     * @param sheetResource
+     * @param location 
      */
     public void load(Cell cell, boolean[] visibleTiles, int[] location) {
-        this.root.getChildren().clear();
+        this.getChildren().clear();
         this.cell = cell;
         this.imgSheet = ImageStore.getImage(cell.getSheet().getImage());
         
@@ -94,7 +88,7 @@ public class CellViewer implements Initializable {
                 }
             }
             
-            this.root.add(g, i % cell.getWidth(),  i/cell.getWidth());
+            this.add(g, i % cell.getWidth(),  i/cell.getWidth());
         }
         
         this.update();
@@ -110,9 +104,9 @@ public class CellViewer implements Initializable {
      * Update cell viewer
      */
     public void update() {
-        this.root.getChildren().remove(this.nodeLocation);
+        this.getChildren().remove(this.nodeLocation);
         
-        this.root.getChildren().forEach( node -> {
+        this.getChildren().forEach( node -> {
             int row = GridPane.getRowIndex(node);
             int column = GridPane.getColumnIndex(node);
             int tileIndex = (row * this.cell.getWidth()) + column;
@@ -130,7 +124,7 @@ public class CellViewer implements Initializable {
             
             // Pin location
             if (distance==0) {
-                Platform.runLater( () -> this.root.add(nodeLocation, column, row));
+                Platform.runLater( () -> this.add(nodeLocation, column, row));
             }
             
             node.setEffect(new ColorAdjust(0, 0, b, 0));

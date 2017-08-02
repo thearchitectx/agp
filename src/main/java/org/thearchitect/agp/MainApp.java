@@ -25,8 +25,9 @@ public class MainApp extends Application {
                                             .state(null, "Sentence 2")
                                             .state(null, "Sentence 3").build());
         
-        stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
+        stage.setTitle("JavaFX and Maven");
+        stage.setMaximized(true);
         stage.show();
         
     }

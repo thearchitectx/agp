@@ -36,6 +36,12 @@ public abstract class NodeUtils<R extends Region>  {
         });
     }
     
+    public static void bindMaxHeightAsParentProportion(Region node, float scale) {
+        Platform.runLater( () -> {
+            node.maxHeightProperty().bind(  ((Region)node.getParent()).heightProperty().multiply(scale) );
+        });
+    }
+    
     public static void bindWidth(Region node, Region child, float scale) {
         child.prefWidthProperty().bind(node.prefWidthProperty().multiply(scale));
     }

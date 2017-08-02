@@ -25,7 +25,7 @@ public class UIStateSequence implements UIState {
     }
     
     protected UIState next() {
-        if (position>=texts.length) {
+        if (position>=texts.length-1) {
             return null;
         } else {
             position++;
