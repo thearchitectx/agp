@@ -31,8 +31,28 @@ public class ActionBuilder<T> {
         return this;
     }
 
+    public ActionBuilder outcome(final T outcome) {
+        this.supplier = new StaticOutcomeSupplier<>(outcome);
+        return this;
+    }
+
     public Action<T> build() {
+        if (supplier==null) {
+            supplier = new StaticOutcomeSupplier<>(null);
+        }
         return new Action(label, description, supplier);
     }
     
+    public static class StaticOutcomeSupplier<O> implements Supplier<O> {
+        private final O outcome;
+
+        public StaticOutcomeSupplier(O outcome) {
+            this.outcome = outcome;
+        }
+        
+        @Override
+        public O get() {
+            return outcome;
+        }
+    }
 }

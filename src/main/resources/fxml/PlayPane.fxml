@@ -6,6 +6,7 @@
 
 <fx:root stylesheets="@main.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <org.thearchitect.agp.ui.CellPlayer fx:id="cellPlayer" />
       <TextFlow fx:id="textFlow" styleClass="GameText" StackPane.alignment="BOTTOM_CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="sdf hsdfh sdf hlkjsfh laskf galfjkgh alkjgh algh alkfjgh aljkgh " />

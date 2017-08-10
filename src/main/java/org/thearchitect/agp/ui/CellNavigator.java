@@ -1,16 +1,18 @@
 package org.thearchitect.agp.ui;
 
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import org.thearchitect.agp.cell.Direction;
+import static org.thearchitect.agp.ui.util.NodeUtils.loadFXML;
 
-public class CellNavigator implements Initializable {
+public class CellNavigator extends BorderPane {
     private Consumer<Direction> navigationConsumer;
     @FXML
     private Button btNorth;
@@ -22,17 +24,18 @@ public class CellNavigator implements Initializable {
     private Button btEast;
     
     public CellNavigator() {
-        setNavigationConsumer(null);
+        loadFXML((Node)this, "/fxml/CellNavigator.fxml");
+        this.navigationConsumer = d -> {};
+        btNorth.addEventHandler(ActionEvent.ACTION, this::north);
+        btSouth.addEventHandler(ActionEvent.ACTION, this::south);
+        btWest.addEventHandler(ActionEvent.ACTION, this::west);
+        btEast.addEventHandler(ActionEvent.ACTION, this::east);
     }
     
-    public final void setNavigationConsumer(Consumer<Direction> navigationConsumer) {
+    public void setNavigationConsumer(Consumer<Direction> navigationConsumer) {
         this.navigationConsumer = navigationConsumer;
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        this.navigationConsumer = d -> {};
-    }    
     
     public void setNavigability(Direction ... directions) {
         List<Direction> d = Arrays.asList(directions);
@@ -42,19 +45,19 @@ public class CellNavigator implements Initializable {
         btEast.setDisable(!d.contains(Direction.EAST));
     }
     
-    public void north() {
+    protected void north(Event event) {
         navigationConsumer.accept(Direction.NORTH);
     }
     
-    public void south() {
+    protected void south(Event event) {
         navigationConsumer.accept(Direction.SOUTH);
     }
     
-    public void west() {
+    protected void west(Event event) {
         navigationConsumer.accept(Direction.WEST);
     }
     
-    public void east() {
+    protected void east(Event event) {
         navigationConsumer.accept(Direction.EAST);
     }
 }

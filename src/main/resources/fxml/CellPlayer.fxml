@@ -2,12 +2,10 @@
 
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="org.thearchitect.agp.ui.CellPlayer"
-     stylesheets="@main.css" 
-     styleClass="CellPlayer">
+<fx:root type="javafx.scene.layout.StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+     stylesheets="@main.css">
    <children>
-      <fx:include fx:id="cellViewer" source="CellViewer.fxml"  />
-      <fx:include fx:id="cellNavigator" source="CellNavigator.fxml" StackPane.alignment="BOTTOM_RIGHT" />
+      <org.thearchitect.agp.ui.CellViewer fx:id="cellViewer"  />
+      <org.thearchitect.agp.ui.CellNavigator fx:id="cellNavigator" StackPane.alignment="BOTTOM_RIGHT" />
    </children>
-</StackPane>
+</fx:root>

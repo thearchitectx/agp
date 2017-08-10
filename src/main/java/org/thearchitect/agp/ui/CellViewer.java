@@ -37,10 +37,6 @@ public class CellViewer extends GridPane {
         imgView.setFitWidth(RECT_SIZE);
         imgView.setFitHeight(RECT_SIZE);
         this.nodeLocation = imgView;
-        
-        cell = Cell.loadFromYaml("/cell/mycity.yml");
-                
-        load(cell, null, null);
     }
    
     /**
@@ -49,7 +45,7 @@ public class CellViewer extends GridPane {
      * @param visibleTiles
      * @param location 
      */
-    public void load(Cell cell, boolean[] visibleTiles, int[] location) {
+    public void loadCell(Cell cell, boolean[] visibleTiles, int[] location) {
         this.getChildren().clear();
         this.cell = cell;
         this.imgSheet = ImageStore.getImage(cell.getSheet().getImage());
@@ -138,7 +134,11 @@ public class CellViewer extends GridPane {
     }
 
     public Direction[] getPositionNavigability() {
-        List<Direction> l = new ArrayList<Direction>(Arrays.asList(Direction.values()));
+        if (this.cell==null) {
+            return new Direction[0];
+        }
+        
+        List<Direction> l = new ArrayList<>(Arrays.asList(Direction.values()));
         if (this.location[1]<=0) {
             l.remove(Direction.WEST);
         } else if (ArrayUtils.contains(this.cell.getSheet().getBlocked(), this.cell.getTiles()[ indexPositionMoving(0,-1) ])) {

@@ -1,11 +1,11 @@
 package org.thearchitect.agp;
 
+import static java.util.Arrays.asList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.thearchitect.agp.cell.Cells;
 import org.thearchitect.agp.ui.MainScene;
 
 
@@ -13,17 +13,20 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/fxml/MainScene.fxml"));
-//        Parent root = loader.load();
-        
-        
         MainScene main = new MainScene();
         Scene scene = new Scene(main);
-                
-        main.play(UIStateSequence.builder().state(null, "Sentence 1")
-                                            .state(null, "Sentence 2")
-                                            .state(null, "Sentence 3").build());
+        
+        DefaultUIState s = new DefaultUIState(null, "What now", () -> asList(
+                Action.builder().label("Option A").outcome(Cells.MY_CITY()).build(),
+                Action.builder().label("Option B").outcome(
+                    UIStateSequence.builder().state(null, "Sentence 1")
+                                                .state(null, "Sentence 2")
+                                                .state(null, "Sentence 3").build()
+                ).build()
+        ));
+        
+        main.play(s);
+        
         
         stage.setScene(scene);
         stage.setTitle("JavaFX and Maven");

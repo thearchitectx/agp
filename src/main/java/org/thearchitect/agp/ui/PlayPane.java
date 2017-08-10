@@ -1,5 +1,6 @@
 package org.thearchitect.agp.ui;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
@@ -8,19 +9,28 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import org.thearchitect.agp.cell.Cell;
 import static org.thearchitect.agp.ui.util.NodeUtils.*;
 
 public class PlayPane extends StackPane {
     @FXML
     private TextFlow textFlow;
+    @FXML
+    private CellPlayer cellPlayer;
     
     public PlayPane() {
         loadFXML((Node)this, "/fxml/PlayPane.fxml");
         bindHeightAsParentProportion((Region)this, 1);
         bindMaxHeightAsParentProportion((Region)textFlow, 0.25f);
         display().plain("This is ").bold("MY").plain(" text !");
-        
-        getChildren().add(new CellViewer());
+    }
+    
+    public BooleanProperty cellPlayerVisibleProperty() {
+        return cellPlayer.visibleProperty();
+    }
+    
+    public void loadCell(Cell cell) {
+        cellPlayer.loadCell(cell);
     }
     
     /**

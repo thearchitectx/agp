@@ -42,16 +42,15 @@ public class ActionPane extends BorderPane {
     
     public void doit() {
         Action action = listView.getSelectionModel().getSelectedItem();
-        Object outcome = action.getSupplier().get();
-        Event.fireEvent(this, new ActionFiredEvent(outcome));
+        Event.fireEvent(this, new ActionFiredEvent(action));
     }
     
     public class ActionFiredEvent extends Event {
-        public final Object actionOutcome;
+        public final Action action;
         
-        public ActionFiredEvent(Object actionOutcome) {
+        public ActionFiredEvent(Action action) {
             super(EVENT_TYPE_ACTION_FIRED);
-            this.actionOutcome = actionOutcome;
+            this.action = action;
         }
     }
     

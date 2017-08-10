@@ -1,26 +1,33 @@
 package org.thearchitect.agp.ui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
+import org.thearchitect.agp.cell.Cell;
+import static org.thearchitect.agp.ui.util.NodeUtils.loadFXML;
 
-public class CellPlayer implements Initializable {
+public class CellPlayer extends StackPane  {
     @FXML
-    private CellViewer cellViewerController;
+    private CellViewer cellViewer;
     @FXML
-    private CellNavigator cellNavigatorController;
+    private CellNavigator cellNavigator;
     
+    private Cell cell;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        cellNavigatorController.setNavigationConsumer( direction -> {
-            cellViewerController.navigate(direction);
-            cellViewerController.update();
-            cellNavigatorController.setNavigability(cellViewerController.getPositionNavigability());
+    public CellPlayer() {
+        loadFXML((Node)this, "/fxml/CellPlayer.fxml");
+        cellNavigator.setNavigationConsumer( direction -> {
+            cellViewer.navigate(direction);
+            cellViewer.update();
+            cellNavigator.setNavigability(cellViewer.getPositionNavigability());
         });
-        
-        cellNavigatorController.setNavigability(cellViewerController.getPositionNavigability());
-    }    
+        cellNavigator.setNavigability(cellViewer.getPositionNavigability());
+    }
+    
+    public void loadCell(Cell cell) {
+        this.cell = cell;
+        cellViewer.loadCell(cell, null, null);
+        cellNavigator.setNavigability(cellViewer.getPositionNavigability());
+    }
     
 }

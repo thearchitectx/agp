@@ -62,7 +62,7 @@ public class CellEditor implements Initializable {
         
         boolean [] visibles = new boolean[tiles.length];
         Arrays.fill(visibles, true);
-        cellViewerController.load(cell, null, null);
+        cellViewerController.loadCell(cell, null, null);
     }
 
 
